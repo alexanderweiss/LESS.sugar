@@ -4,7 +4,7 @@
 */
 
 @base {
-	color: #000;
+	color: #ddd;
 	background-color: #fff;
 }
 
@@ -12,36 +12,44 @@ less {
 	spell-check: disabled;
 }
 
-less.selector, variable.definition.style.less > property-name {
-	color: #3a77bf;
+pseudo-class {
+  color: #814201;
 }
 
-less > property-name, mixin.less > property-name {
-	color: #d4430d;
+variable.definition.style.less > property-name, property-name, mixin.argument.name {
+	color: #AB6526;
+}
+
+property-value, mixin.argument.default.value {
+	color: #43a202;
 }
 
 less > property-assigner, mixin.less > property-assigner {
 	color: #3a77bf;
 }
 
-less > property-value, mixin.less > property-value, variable.style.less > property-name {
-	color: #43a202;
-}
-
 less.at-rule string {
 	color: #474747;
 }
 
+string.quoted.double, string.quoted.single {
+  color: #2418c6;
+}
+
 keyword.important.less {
 	font-weight: bold;
-	color: #6700b9;
-	width: 12px;
+	color: #43a202;
 }
 
-mixin.definition.less {
-	color: #3a77bf;
+mixin.less {
+	color: #7a3e9d;
 }
 
-mixin.less, mixin.less > punctuation {
-	color: #d6cb58;
+mixin.less > punctuation {
+	color: #000;
+}
+
+comment.line.less, comment.block.less {
+  color: #a8a8a8;
+  background-color: #ececec;
 }
