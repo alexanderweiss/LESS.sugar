@@ -27,6 +27,7 @@
 	</recipe>
 	
 	<recipe name="less.variable">
+        <class>ESJSControlBlockItem</class>
 		<selector>variable.definition.less:capture(name)</selector>
 	</recipe>
 	
