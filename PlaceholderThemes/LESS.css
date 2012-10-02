@@ -12,12 +12,16 @@ less {
 	spell-check: disabled;
 }
 
+less.selector, css.selector entity punctuation {
+	color: #3a77bf;
+}
+
 pseudo-class {
   color: #814201;
 }
 
 variable.definition.style.less > property-name, property-name, mixin.argument.name {
-	color: #AB6526;
+	color: #d4430d;
 }
 
 property-value, mixin.argument.default.value {

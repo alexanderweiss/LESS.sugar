@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <itemizer>
 
-	<recipe name="less.at-rule.collection">
-		<selector>at-rule.less:capture(name)</selector>
+	<recipe name="less.at-media.collection">
+		<selector>at-rule.media.less:has-child(x-item-start:capture(name))</selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>
 	</recipe>
-
-	<recipe name="less.style">
-		<start-selector>style.less > selector.less:capture(name)</start-selector>
-		<end-selector>style.less</end-selector>
+	
+	<recipe name="less.at-keyframe.collection">
+		<selector>at-rule.keyframes.less:has-child(x-item-start:capture(name))</selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>
+	</recipe>
+	
+	<recipe name="less.at-page.collection">
+		<selector>at-rule.page.less:has-child(keyword.control:capture(name))</selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<recipe name="less.at-font-face">
+		<selector>at-rule.font-face.less:has-child(keyword.control:capture(name))</selector>
 	</recipe>
 	
 	<recipe name="less.variable">
 		<selector>variable.definition.less:capture(name)</selector>
 	</recipe>
 	
-	<recipe name="less.mixin.collection">
-		<selector>mixin.definition.less:capture(name)</selector>
+	<recipe name="less.property-list.block">
+		<start-selector>selector.less:capture(name) </start-selector>
+        <end-selector>property-list.block.less > punctuation.end</end-selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>
@@ -30,6 +41,11 @@
 	<recipe name="less.comment">
 		<class>ESCommentItem</class>
 		<selector>comment.less</selector>
+	</recipe>
+    
+    <recipe name="less.at-import">
+		<class>ESStyleImportItem</class>
+		<selector>at-rule.import.less</selector>
 	</recipe>
 	
 </itemizer>
