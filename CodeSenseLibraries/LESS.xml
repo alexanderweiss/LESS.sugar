@@ -482,58 +482,5 @@
         <completion string=".makeColumn" />
         <completion string="#grid" />-->
         <!--<completion string="" />-->
-
-	</set>
-    
-    <set name="nl.alexanderweiss.less.mixins.tms">
-        <completion string=".safeDisplay" />
-        <completion string=".at2x" />
-        <completion string="#gradient > .vertical-split" />
-        <completion string="#gradient > .horizontal-three-colors" />
-        <completion string="#font > .brand" />
-        <completion string="#font > .handwritten-light" />
-        <completion string="#font > .handwritten-standard" />
-        <completion string="#font > .handwritten-bold" />
-        <completion string="#font > #family > .brand">
-            <behavior>
-                <append-dynamic>
-                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
-					<transform-into>(?1::(${1:@size}, ${2:@weight}, ${3:@lineHeight}));</transform-into>
-                </append-dynamic>
-                <confirm characters="\(;" />
-                <partial-confirm characters="->." />
-            </behavior>
-        </completion>
-        <completion string="#font > #family > .handwritten-light">
-            <behavior>
-                <append-dynamic>
-                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
-					<transform-into>(?1::(${1:@size}, ${2:@weight}, ${3:@lineHeight}));</transform-into>
-                </append-dynamic>
-                <confirm characters="\(;" />
-                <partial-confirm characters="->." />
-            </behavior>
-        </completion>
-        <completion string="#font > #family > .handwritten-standard">
-            <behavior>
-                <append-dynamic>
-                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
-					<transform-into>(?1::(${1:@size}, ${2:@weight}, ${3:@lineHeight}));</transform-into>
-                </append-dynamic>
-                <confirm characters="\(;" />
-                <partial-confirm characters="->." />
-            </behavior>
-        </completion>
-        <completion string="#font > #family > .handwritten-bold">
-            <behavior>
-                <append-dynamic>
-                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
-					<transform-into>(?1::(${1:@size}, ${2:@weight}, ${3:@lineHeight}));</transform-into>
-                </append-dynamic>
-                <confirm characters="\(;" />
-                <partial-confirm characters="->." />
-            </behavior>
-        </completion>
-	</set>
     
 </codesense>

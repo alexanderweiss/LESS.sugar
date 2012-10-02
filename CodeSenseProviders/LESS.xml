@@ -64,7 +64,6 @@
     <provider>
 		<selector>selector.less, mixin.reference.less</selector>
 		<completions>nl.alexanderweiss.less.mixins.bootstrap</completions>
-        <completions>nl.alexanderweiss.less.mixins.tms</completions>
 		<complete-match capture="2">(^|;|{)\s*([#.a-zA-Z0-9-\s>\-]*)</complete-match>
         <require-suffix>(\(|;|^)</require-suffix>
 	</provider>
