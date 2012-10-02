@@ -527,7 +527,7 @@
         
         <collection name="selectors">  
             <zone name="selector.less">
-                <starts-with>(?=[\>:\.#a-zA-Z@\\])</starts-with><!--(?=[\>:\.\*#a-zA-Z@\\])-->
+                <starts-with>(?=[&amp;\>:\.#a-zA-Z@\\])</starts-with><!--(?=[\>:\.\*#a-zA-Z@\\])-->
                 <ends-with>(?=\{)</ends-with>
                 <subzones>
                     <include collection="pseudo-classes"/>
