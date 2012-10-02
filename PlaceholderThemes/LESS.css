@@ -20,7 +20,7 @@ pseudo-class {
   color: #814201;
 }
 
-variable.definition.style.less > property-name, property-name, mixin.argument.name {
+variable.definition.style.less > property-name, property-name {
 	color: #d4430d;
 }
 

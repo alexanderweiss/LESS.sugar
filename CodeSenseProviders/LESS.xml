@@ -1,24 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+ CodeSense Providers map contexts in a document to possible completions. The actual completions are defined in the various CodeSense libraries, categorized using their key. A CodeSense Provider tells Espresso what CodeSense libraries are active in the current context. One of these XML files can contain many <provider> elements.
+ 
+ -->
 <codesense>
-
+    
+	<!-- css property values -->
 	<provider>
-		<selector>less > property-name:capture(name) + property-value - punctuation.separator</selector>
-		<completions>com.less.property.${name}</completions>
+		<!-- The selector element specifies in what document contexts the provider is active. -->
+		<selector>property-name:capture(name) + property-value - punctuation.separator, property-name:capture(name) + property-value > punctuation.terminator, property-name:capture(name) + property-value > punctuation.function</selector>
+		
+		<!-- The completions element points to the CodeSense Library key that has to be used. It can contain placeholders for captured pieces of text from the selector. -->
+		<completions>com.macrabbit.css.property.${name}</completions>
+		
+		<!-- The complete-match element defines a regular expression for the piece of text that is completed by this provider. It's not necessary to append an end-of-line symbol: this happens automatically. Note that even if this provider is active in the current context, and the expression is matched, it may still be ignored for a completion if other providers match a different piece of the same text. -->
 		<complete-match>[a-zA-Z0-9-]*</complete-match>
 		
+		<!-- The require-suffix element (optional) defines a regular expression which the text *after* the completion has to match. It's not necessary to prepend a begin-of-line symbol: this happens automatically. -->
 		<require-suffix>[^:]|</require-suffix>
 	</provider>
-
+	
+	<!-- !important keyword -->
 	<provider>
-		<selector>style.less, property-list.less > property-name, style.less > property-value punctuation.separator</selector>
-		<completions>com.less.properties</completions>
-		<complete-match capture="2">(^)\s*([a-zA-Z0-9-]*)</complete-match>
+		<selector>less property-value, less property-value > punctuation.terminator</selector>
+		<completions>com.macrabbit.css.generic-property-values</completions>
+		<complete-match>![iImMpPoOrRtTaAnN]*</complete-match>
 	</provider>
-
+	
+	<!-- css properties -->
 	<provider>
-		<selector>style.less, style.less > property-name, style.less > property-value punctuation.separator</selector>
-		<completions>com.less.browser-specific-properties</completions>
-		<complete-match capture="2">(^)\s*([a-zA-Z0-9-]+)</complete-match>
+		<selector>*:not(at-rule):not(mixin), property-list.less, property-list.less > property-name, property-list.less > punctuation.end, property-list.less > property-value punctuation.separator, html string > embedded.property-list.less + punctuation.end</selector>
+		<completions>com.macrabbit.css.properties</completions>
+		<completions>com.macrabbit.css.browser-specific-properties</completions>
+		<complete-match capture="2">(^|;|{)\s*([a-zA-Z0-9-]*)</complete-match>
+		<require-suffix>(:|\s|}|^)</require-suffix>
+	</provider>
+	
+	<!-- css properties that should be reluctantly suggested because they're SVG-specific -->
+	<!--<provider>
+		<selector>property-list.less, property-list.less > property-name, property-list.less > punctuation.end, property-list.less > property-value punctuation.separator, xml string > embedded.property-list.less + punctuation.end</selector>
+		<completions>com.macrabbit.css.svg-specific-properties</completions>
+		<complete-match capture="2">(^|;|{)\s*([a-zA-Z0-9-]+)</complete-match>
+		<require-suffix>(:|\s|}|^)</require-suffix>
+	</provider>-->
+	
+	<!-- css pseudo-classes -->
+	<provider>
+		<selector>selector.less, selector.less > pseudo-class</selector>
+		<completions>com.macrabbit.css.pseudo-classes</completions>
+		<completions>com.macrabbit.css.pseudo-classes.equations</completions>
+		<complete-match>:[a-zA-Z:-]*</complete-match>
+	</provider>
+	
+	<!-- css at-keywords -->
+	<provider>
+		<selector>language-root.less, selector.less</selector>
+		<completions>com.macrabbit.css.at-keywords</completions>
+		<complete-match>^\s*@[a-zA-Z-]*</complete-match>
+	</provider>
+    
+    <!-- less mixins -->
+    <provider>
+		<selector>selector.less, mixin.reference.less</selector>
+		<completions>nl.alexanderweiss.less.mixins.bootstrap</completions>
+        <completions>nl.alexanderweiss.less.mixins.tms</completions>
+		<complete-match capture="2">(^|;|{)\s*([#.a-zA-Z0-9-\s>\-]*)</complete-match>
+        <require-suffix>(\(|;|^)</require-suffix>
 	</provider>
 	
 </codesense>
