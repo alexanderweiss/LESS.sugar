@@ -231,26 +231,8 @@
 			</subzones>
 		</zone>
         
-		<zone name="property-list.block.less">
-			<starts-with>
-				<expression>\{</expression>
-				<capture number="0" name="punctuation.begin"/>
-			</starts-with>
-			<ends-with>
-				<expression>\}</expression>
-				<capture number="0" name="punctuation.end"/>
-			</ends-with>
-			<subzones>
-				<include collection="comments"/>
-				<include collection="variable-def"/>
-                <include collection="mixin-reference"/>
-				<include collection="mixins"/>
-                
-				<include collection="properties"/>
-                
-				<include collection="selectors"/>
-				<include syntax="self" />
-			</subzones>
+		<zone name="property-list.block.punctuation.end">
+            <expression>\}</expression>
 		</zone>
         
         <include collection="mixin-reference"/>
@@ -527,7 +509,7 @@
         
         <collection name="selectors">  
             <zone name="selector.less">
-                <starts-with>(?=[:.*#a-zA-Z@\\])</starts-with>
+                <starts-with>(?=[\>:\.\*#a-zA-Z@\\])</starts-with>
                 <ends-with>(?=\{)</ends-with>
                 <subzones>
                     <include collection="pseudo-classes"/>

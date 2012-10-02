@@ -32,7 +32,7 @@
 	
 	<recipe name="less.property-list.block">
 		<start-selector>selector.less:capture(name) </start-selector>
-        <end-selector>property-list.block.less > punctuation.end</end-selector>
+        <end-selector>property-list.block.punctuation.end</end-selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>
