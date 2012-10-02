@@ -444,13 +444,8 @@
                     <capture number="2" name="variable.property-name.less"/>
                 </starts-with>
                 <ends-with>
-                    <expression>(;|(?=\})|(?=\)))</expression>
-                    <capture number="1" name="punctuation.terminator.rule.less"/>
+                    <expression>(?=:)</expression>
                 </ends-with>
-                <subzones>
-                    <cut-off>;</cut-off>
-                    <include collection="property-value"/>
-                </subzones>
             </zone>
         </collection>
         
