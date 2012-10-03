@@ -507,7 +507,7 @@
         <collection name="mixin-reference">
 			<zone name="mixin.reference.less">
                 <starts-with>
-                    <expression>[.#][a-zA-Z]([\s\(\)-@a-zA-Z]*?(\(.*?\))|[\s\(\)-@a-zA-Z]*?)(?=;)</expression>
+                    <expression>[.#][a-zA-Z]([\s\(\)-@a-zA-Z]*?(\(.*?\))|[\s\(\)-@a-zA-Z]*?)((?=;)|(?=\}))</expression>
                     <capture number="2" name="mixin.arguments.less">
                         <subzones>
                             <include collection="mixin-arguments"/>
@@ -515,7 +515,7 @@
                     </capture>
                 </starts-with>
                 <ends-with>
-                    <expression>(?=;)</expression>
+                    <expression>((?=;)|(?=\}))</expression>
                 </ends-with>
 			</zone>
 		</collection>
