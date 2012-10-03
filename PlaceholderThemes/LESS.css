@@ -24,7 +24,7 @@ variable.definition.style.less > property-name, property-name {
 	color: #d4430d;
 }
 
-property-value, mixin.argument.default.value {
+property-value, mixin.argument.default.value, mixin.argument.value {
 	color: #43a202;
 }
 

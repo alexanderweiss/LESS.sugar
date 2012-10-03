@@ -250,7 +250,6 @@
 		<collection name="properties">
             <include collection="property-name"/>
             <include collection="property-value"/>
-            <include collection="variables"/>
 		</collection>
         
         <collection name="property-name">
@@ -361,6 +360,20 @@
 					</zone>
 				</subzones>
 			</zone>
+            <zone name="support.function.color.transform.less">
+                <starts-with>
+					<expression>(lighten|darken|saturate|desaturate|fadein|fadeout|spin|mix)\s*(\()</expression>
+					<capture number="1" name="name"/>
+					<capture number="2" name="punctuation.section.function.less"/>
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="punctuation.section.function.less"/>
+				</ends-with>
+				<subzones>
+					<include collection="property-values"/>
+				</subzones>
+            </zone>
 			<zone name="keyword.important.less">
 				<expression>\!\s*important</expression>
 			</zone>
@@ -449,8 +462,8 @@
             </zone>
         </collection>
         
-        <collection name="mixin-arguments">
-            <zone name="mixin.arguments.less">
+        <collection name="mixin-arguments-definition">
+            <zone name="mixin.arguments.definition.less">
                 <starts-with>
                     <expression>(\()</expression>
                     <capture number="1" name="punctuation.definition.begin"/>
@@ -482,8 +495,37 @@
                         <ends-with>
                             <expression>(?=,|\))</expression>
                         </ends-with>
+                        <subzones>
+                            <include collection="property-values" />
+                        </subzones>
                     </zone>
                 </subzones>
+            </zone>
+        </collection>
+        
+        <collection name="mixin-arguments">
+            <zone name="punctuation.definition.begin">
+                <expression>\(</expression>
+            </zone>
+            <zone name="punctuation.definition.end">
+                <expression>\)</expression>
+            </zone>
+            <zone name="punctuation.separator">
+                <expression>(,)</expression>
+                <capture number="1" name="punctuation.separator"/>
+            </zone>
+            <zone name="mixin.argument.less">
+                <starts-with>
+                    <expression>(\s*[^,\)]*)</expression>
+                    <capture number="1" name="mixin.argument.value.less">
+                        <subzones>
+                            <include collection="property-values" />
+                        </subzones>
+                    </capture>
+                </starts-with>
+                <ends-with>
+                    <expression>(?=,|\))</expression>
+                </ends-with>
             </zone>
         </collection>
         
@@ -499,7 +541,7 @@
                     <expression>(?=\{)</expression>
                 </ends-with>
 				<subzones>
-                    <include collection="mixin-arguments"/>
+                    <include collection="mixin-arguments-definition"/>
                 </subzones>
 			</zone>
 		</collection>
