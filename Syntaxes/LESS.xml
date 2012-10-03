@@ -515,17 +515,12 @@
                 <capture number="1" name="punctuation.separator"/>
             </zone>
             <zone name="mixin.argument.less">
-                <starts-with>
-                    <expression>(\s*[^,\)]*)</expression>
-                    <capture number="1" name="mixin.argument.value.less">
-                        <subzones>
-                            <include collection="property-values" />
-                        </subzones>
-                    </capture>
-                </starts-with>
-                <ends-with>
-                    <expression>(?=,|\))</expression>
-                </ends-with>
+                <expression>((?=[^,\)])([^\(]*?(,)|.*?\)[^\(]*?(,|\))))</expression>
+                <capture number="0" name="mixin.argument.value.less">
+                    <subzones>
+                        <include collection="property-values" />
+                    </subzones>
+                </capture>
             </zone>
         </collection>
         
