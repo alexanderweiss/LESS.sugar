@@ -493,7 +493,7 @@
 		<collection name="mixins">
 			<zone name="mixin.less">
                 <starts-with>
-                    <expression>(?=[-:.*#a-zA-Z@\\]*\()</expression>
+                    <expression>(?=[-.*#a-zA-Z@\\]*?\s*?\()</expression>
                 </starts-with>
                 <ends-with>
                     <expression>(?=\{)</expression>
