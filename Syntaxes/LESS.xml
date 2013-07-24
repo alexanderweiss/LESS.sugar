@@ -484,7 +484,7 @@
                             <capture number="2" name="variable.property-name.less"/>
                         </starts-with>
                         <ends-with>
-                            <expression>(?=(:|\))</expression>
+                            <expression>(?=(:|,|\)))</expression>
                         </ends-with>
                     </zone>
                     <zone name="mixin.argument.default.value">
