@@ -135,7 +135,7 @@
 		
 		<zone name="at-rule.keyframes.less">
 			<starts-with>
-				<expression>((@)(?:-[a-z]+-)?keyframes)\s+([^{]*)</expression>
+                <expression>(?=((@)(?:-[a-z]+-)?keyframes))</expression>
 				<capture number="0" name="x-item-start"/>
 				<capture number="1" name="keyword.control"/>
 				<capture number="2" name="punctuation.definition"/>
@@ -149,36 +149,21 @@
 				</capture>
 			</starts-with>
 			<ends-with>
-				<expression>(?&lt;=})</expression>
-			</ends-with>
-			<subzones>
-				<zone name="block.keyframes.less">
-					<starts-with>
-						<expression>\{</expression>
-						<capture number="0" name="punctuation.begin"/>
-					</starts-with>
-					<ends-with>
-						<expression>\}</expression>
-						<capture number="0" name="punctuation.end"/>
-					</ends-with>
-					<subzones>
-						<!-- FIXME the zone names here are total crap -->
-						<zone name="selector.keyframe.less">
-							<starts-with>
-								<expression>(from|to)|([0-9\.]+%)</expression>
-								<capture number="1" name="keyword"/>
-								<capture number="2" name="constant.numeric.percentage"/>
-							</starts-with>
-							<ends-with>(?=\{)</ends-with>
-							<subzones>
-								<include collection="comments"/>
-							</subzones>
-						</zone>
-						<include syntax="$self"/>
-					</subzones>
-				</zone>
-			</subzones>
+                <expression>(?=\{)</expression>
+            </ends-with>
 		</zone>
+        
+        <zone name="selector.keyframe.less">
+            <starts-with>
+                <expression>(from|to)\s*?(?=\{)|([0-9\.]+%)\s*?(?=\{)</expression>
+                <capture number="1" name="keyword"/>
+                <capture number="2" name="constant.numeric.percentage"/>
+            </starts-with>
+            <ends-with>(?=\{)</ends-with>
+            <subzones>
+                <include collection="comments"/>
+            </subzones>
+        </zone>
 		
 		<zone name="at-rule.page.less">
 			<starts-with>
@@ -515,7 +500,7 @@
                 <capture number="1" name="punctuation.separator"/>
             </zone>
             <zone name="mixin.argument.less">
-                <expression>((?=[^,\)])([^\(]*?(,)|.*?\)[^\(]*?(,|\))))</expression>
+                <expression>(?=[^,\)])([^\(]*?(,|\Z)|.*?\)[^\(]*?(,|\)))</expression>
                 <capture number="0" name="mixin.argument.value.less">
                     <subzones>
                         <include collection="property-values" />
