@@ -2,7 +2,8 @@
 <itemizer>
 
 	<recipe name="less.at-media.collection">
-		<selector>at-rule.media.less:has-child(x-item-start:capture(name))</selector>
+		<start-selector>at-rule.media.less:capture(name))</start-selector>
+        <end-selector>property-list.block.punctuation.end</end-selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>
@@ -41,7 +42,7 @@
 	</recipe>
     
     <recipe name="less.mixin">
-		<start-selector>mixin.less:capture(name):not(reference)</start-selector>
+		<start-selector>mixin.less:not(reference)</start-selector>
         <end-selector>property-list.block.punctuation.end</end-selector>
 		<subrecipes>
 			<include-root-recipes/>

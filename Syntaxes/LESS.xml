@@ -75,13 +75,13 @@
         
 		<zone name="at-rule.media.less">
 			<starts-with>
-				<expression>((@)media)\s+([\w\s,]*)\s*</expression>
+				<expression>(?=((@)media))(.*?)</expression>
 				<capture number="1" name="keyword.control"/>
 				<capture number="2" name="punctuation.definition.keyword"/>
 				<capture number="3" name="support.constant"/>
 			</starts-with>
 			<ends-with>
-				<expression>(?&lt;=})</expression>
+				<expression>(?=\{)</expression>
 				<!--capture number="1" name="keyword.control.at-rule.media.less"/-->
 			</ends-with>
 			<subzones>
