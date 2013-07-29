@@ -21,7 +21,7 @@
         
 		<include collection="comments"/>
         
-		<zone name="at-rule.charset.less">
+		<zone name="at-rule.charset.css">
 			<starts-with>
 				<expression>((@)charset)</expression>
 				<capture number="1" name="keyword.control"/>
@@ -36,7 +36,7 @@
 			</subzones>
 		</zone>
 		
-		<zone name="at-rule.import.less">
+		<zone name="at-rule.import.css">
 			<starts-with>
 				<expression>((@)import\b)\s*</expression>
 				<capture number="1" name="keyword.control"/>
@@ -89,7 +89,7 @@
 			</subzones>
 		</zone>
         
-        <zone name="at-rule.font-face.less">
+        <zone name="at-rule.font-face.css">
 			<starts-with>
 				<expression>((@)font-face\b)\s*</expression>
 				<capture number="1" name="keyword.control"/>
@@ -116,7 +116,7 @@
 			</subzones>
 		</zone>
 		
-		<zone name="at-rule.namespace.less">
+		<zone name="at-rule.namespace.css">
 			<starts-with>
 				<expression>((@)namespace)\s+([\w\s,]*)\s*</expression>
 				<capture number="1" name="keyword.control"/>
@@ -165,7 +165,7 @@
             </subzones>
         </zone>
 		
-		<zone name="at-rule.page.less">
+		<zone name="at-rule.page.css">
 			<starts-with>
 				<expression>((@)page)\b</expression>
 				<capture number="1" name="keyword.control"/>
@@ -223,7 +223,7 @@
         <include collection="mixin-reference"/>
         <include collection="mixins"/>
         
-        <include collection="variable-def"/>
+        <include collection="variable-definition"/>
         <include collection="properties"/>
         <include collection="property-list.block.less"/>
         <include collection="selectors"/>
@@ -318,9 +318,37 @@
 					</zone>
 				</subzones>
 			</zone>
+            <zone name="support.function.formatting.less">
+                <starts-with>
+					<expression>(escape|e|%|unit|color|data-uri|number)\s*(\()</expression>
+					<capture number="1" name="name"/>
+					<capture number="2" name="punctuation.section.function.less"/>
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="punctuation.section.function.less"/>
+				</ends-with>
+				<subzones>
+					<include collection="property-values"/>
+				</subzones>
+            </zone>
+            <zone name="support.function.math.less">
+                <starts-with>
+					<expression>(ceil|floor|percentage|round|sqrt|abs|sin|asin|cos|acos|tan|atan|pi|pow|mod)\s*(\()</expression>
+					<capture number="1" name="name"/>
+					<capture number="2" name="punctuation.section.function.less"/>
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="punctuation.section.function.less"/>
+				</ends-with>
+				<subzones>
+					<include collection="property-values"/>
+				</subzones>
+            </zone>
 			<zone name="support.function.color.less">
 				<starts-with>
-					<expression>(rgba?|hsla?)\s*(\()</expression>
+					<expression>(rgba?|hsla?|hsva?|argb)\s*(\()</expression>
 					<capture number="1" name="name"/>
 					<capture number="2" name="punctuation.section.function.less"/>
 				</starts-with>
@@ -345,11 +373,59 @@
 					</zone>
 				</subzones>
 			</zone>
-            <zone name="support.function.color.transform.less">
+            <zone name="support.function.color.part.less">
                 <starts-with>
-					<expression>(lighten|darken|saturate|desaturate|fadein|fadeout|spin|mix)\s*(\()</expression>
+					<expression>(hue|saturation|lightness|hsvhue|hsvsaturation|hsvvalue|red|green|blue|alpha|luma)\s*(\()</expression>
 					<capture number="1" name="name"/>
 					<capture number="2" name="punctuation.section.function.less"/>
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="punctuation.section.function.less"/>
+				</ends-with>
+				<subzones>
+					<include collection="property-values"/>
+				</subzones>
+            </zone>
+			<zone name="keyword.important.less">
+				<expression>\!\s*important</expression>
+			</zone>
+            <zone name="support.function.color.transform.single.less">
+                <starts-with>
+					<expression>(lighten|darken|saturate|desaturate|fadein|fadeout|fade|spin|mix|greyscale|contrast)\s*(\()</expression>
+					<capture number="1" name="name"/>
+					<capture number="2" name="punctuation.section.function.less"/>
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="punctuation.section.function.less"/>
+				</ends-with>
+				<subzones>
+					<include collection="property-values"/>
+				</subzones>
+            </zone>
+            <zone name="support.function.color.transform.multiple.less">
+                <starts-with>
+					<expression>(multiply|screen|overlay|softlight|hardlight|difference|exclusion|average|negation)\s*(\()</expression>
+					<capture number="1" name="name"/>
+					<capture number="2" name="punctuation.section.function.less"/>
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="punctuation.section.function.less"/>
+				</ends-with>
+				<subzones>
+					<include collection="property-values"/>
+				</subzones>
+            </zone>
+			<zone name="keyword.important.less">
+				<expression>\!\s*important</expression>
+			</zone>
+            <zone name="support.function.check">
+                <starts-with>
+					<expression>(is(color|number|string|keyword|url|pixel|percentage|em|unit))\s*(\()</expression>
+					<capture number="1" name="name"/>
+					<capture number="3" name="punctuation.section.function.less"/>
 				</starts-with>
 				<ends-with>
 					<expression>(\))</expression>
@@ -427,7 +503,6 @@
             </zone>
         </collection>
         
-        <!-- LESS Only Stuff -->
         <collection name="variables">
             <zone name="variable.style.less">
                 <expression>(@)(?!important)([a-zA-Z0-9_-]+)</expression>
