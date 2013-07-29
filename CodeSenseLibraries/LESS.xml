@@ -4,6 +4,106 @@
 	<behavior>
 		<confirm-partial characters="-" />
 	</behavior>
+    
+    <set name="nl.alexanderweiss.less.functions.string">
+        <behavior>
+            <append-dynamic>
+                <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                <transform-into>(?1::(${1:@string}))</transform-into>
+            </append-dynamic>
+            <confirm characters="\(;" />
+        </behavior>
+        <completion string="escape" />
+        <completion string="e" />
+        <completion string="%" />
+    </set>
+    
+    <set name="nl.alexanderweiss.less.functions.misc">
+        <behavior>
+            <append-dynamic>
+                <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                <transform-into>(?1::(${1:@string}))</transform-into>
+            </append-dynamic>
+            <confirm characters="\(;" />
+        </behavior>
+        <completion string="color" />
+        <completion string="unit">
+            <behavior>
+                <append-dynamic>
+                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                    <transform-into>(?1::(${1:@dimension}, ${2:@unit}))</transform-into>
+                </append-dynamic>
+                <confirm characters="\(;" />
+            </behavior>
+        </completion>
+        <completion string="data-uri">
+            <behavior>
+                <append-dynamic>
+                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                    <transform-into>(?1::(${1:@mimetype}, ${2:@url}))</transform-into>
+                </append-dynamic>
+                <confirm characters="\(;" />
+            </behavior>
+        </completion>
+        <completion string="convert">
+            <behavior>
+                <append-dynamic>
+                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                    <transform-into>(?1::(${1:@number}, ${2:@units}))</transform-into>
+                </append-dynamic>
+                <confirm characters="\(;" />
+            </behavior>
+        </completion>
+    </set>
+    
+    <set name="nl.alexanderweiss.less.functions.math">
+        <behavior>
+            <append-dynamic>
+                <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                <transform-into>(?1::(${1:@number}))</transform-into>
+            </append-dynamic>
+            <confirm characters="\(;" />
+        </behavior>
+        <completion string="ceil" />
+        <completion string="floor" />
+        <completion string="percentage" />
+        <completion string="round">
+            <behavior>
+                <append-dynamic>
+                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                    <transform-into>(?1::(${1:@number}, ${2:@places}))</transform-into>
+                </append-dynamic>
+                <confirm characters="\(;" />
+            </behavior>
+        </completion>
+        <completion string="sqrt" />
+        <completion string="abs" />
+        <completion string="sin" />
+        <completion string="asin" />
+        <completion string="cos" />
+        <completion string="acos" />
+        <completion string="tan" />
+        <completion string="atan" />
+        <completion string="pi" />
+        <completion string="pow">
+            <behavior>
+                <append-dynamic>
+                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                    <transform-into>(?1::(${1:@base}, ${2:@exponent}))</transform-into>
+                </append-dynamic>
+                <confirm characters="\(;" />
+            </behavior>
+        </completion>
+        <completion string="mod">
+            <behavior>
+                <append-dynamic>
+                    <matched-suffix>(\s*\()|\s*[^(]|[^\s(]</matched-suffix>
+                    <transform-into>(?1::(${1:@number}, ${2:@number}))</transform-into>
+                </append-dynamic>
+                <confirm characters="\(;" />
+            </behavior>
+        </completion>
+    </set>
 	
 	<set name="nl.alexanderweiss.less.mixins.bootstrap">
         <behavior>
@@ -482,5 +582,5 @@
         <completion string=".makeColumn" />
         <completion string="#grid" />-->
         <!--<completion string="" />-->
-    
+    </set>
 </codesense>
