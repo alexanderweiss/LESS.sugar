@@ -216,6 +216,10 @@
 			</subzones>
 		</zone>
         
+        <zone name="property-list.block.punctuation.begin">
+            <expression>\{</expression>
+		</zone>
+        
 		<zone name="property-list.block.punctuation.end">
             <expression>\}</expression>
 		</zone>
