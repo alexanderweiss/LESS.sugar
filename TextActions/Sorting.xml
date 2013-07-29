@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<action-sort-instructions>
+
+	<sort-template>
+		<selector>nl.alexanderweiss.text-actions.css.new-style</selector>
+		<selector>nl.alexanderweiss.text-actions.css.new-group</selector>
+	</sort-template>
+	
+</action-sort-instructions>

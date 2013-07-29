@@ -1,0 +1,12 @@
+"nl.alexanderweiss.text-actions.less.new-style.snippet-fragment(style-name)" = "style";
+"nl.alexanderweiss.text-actions.less.new-group.snippet-fragment(group-name)" = "Untitled Group";
+
+"nl.alexanderweiss.text-actions.less.new-style.title" = "New Style";
+"nl.alexanderweiss.text-tools.less.new-style.label" = "New Style";
+"nl.alexanderweiss.text-tools.less.new-style.tooltip" = "Add a new style rule";
+"nl.alexanderweiss.text-tools.less.new-style.default-name" = "style";
+
+"nl.alexanderweiss.text-actions.less.new-group.title" = "New Group";
+"nl.alexanderweiss.text-tools.less.new-group.label" = "New Group";
+"nl.alexanderweiss.text-tools.less.new-group.tooltip" = "Add a new group; select multiple items to group them";
+"nl.alexanderweiss.text-tools.less.new-group.default-name" = "Untitled Group";
