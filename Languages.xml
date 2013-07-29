@@ -5,7 +5,7 @@
 	<language id="nl.alexanderweiss.LESS">
 		
 		<!-- Note: root-zone will be deprecated in the next beta and replaced by syntax-name -->
-		<root-zone>styling.less</root-zone>
+		<root-zone>language-root.less</root-zone>
 		<name>LESS</name>
 		<detectors>
 			<extension>less</extension>

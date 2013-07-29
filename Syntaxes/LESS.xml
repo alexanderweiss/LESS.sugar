@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<syntax name="styling.less">
+<syntax name="language-root.less">
 	<zones>
         <!--
          <include collection="variable-def"/>
