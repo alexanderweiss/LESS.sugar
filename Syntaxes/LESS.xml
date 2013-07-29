@@ -513,7 +513,7 @@
             </zone>
         </collection>
         
-        <collection name="variable-def">
+        <collection name="variable-definition">
             <zone name="variable.definition.less">
                 <starts-with>
                     <expression>(@)([a-zA-Z0-9_-]+(?=:))</expression>
