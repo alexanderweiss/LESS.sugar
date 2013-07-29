@@ -298,7 +298,7 @@
             <include collection="variables"/>
 			<include collection="string-double"/>
 			<include collection="string-single"/>
-			<zone name="support.function.misc.less">
+			<zone name="support.function.css-misc.less">
 				<starts-with>
 					<expression>(url|attr|counters?)\s*(\()</expression>
 					<capture number="1" name="name"/>
@@ -322,9 +322,23 @@
 					</zone>
 				</subzones>
 			</zone>
-            <zone name="support.function.formatting.less">
+            <zone name="support.function.string.less">
                 <starts-with>
-					<expression>(escape|e|%|unit|color|data-uri|number)\s*(\()</expression>
+					<expression>(escape|e|%)\s*(\()</expression>
+					<capture number="1" name="name"/>
+					<capture number="2" name="punctuation.section.function.less"/>
+				</starts-with>
+				<ends-with>
+					<expression>(\))</expression>
+					<capture number="1" name="punctuation.section.function.less"/>
+				</ends-with>
+				<subzones>
+					<include collection="property-values"/>
+				</subzones>
+            </zone>
+            <zone name="support.function.misc.less">
+                <starts-with>
+					<expression>(color|unit|data-uri|convert)\s*(\()</expression>
 					<capture number="1" name="name"/>
 					<capture number="2" name="punctuation.section.function.less"/>
 				</starts-with>
