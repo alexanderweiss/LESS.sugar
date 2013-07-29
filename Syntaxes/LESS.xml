@@ -391,7 +391,7 @@
 					</zone>
 				</subzones>
 			</zone>
-            <zone name="support.function.color.part.less">
+            <zone name="support.function.color.channel.less">
                 <starts-with>
 					<expression>(hue|saturation|lightness|hsvhue|hsvsaturation|hsvvalue|red|green|blue|alpha|luma)\s*(\()</expression>
 					<capture number="1" name="name"/>
@@ -408,7 +408,7 @@
 			<zone name="keyword.important.less">
 				<expression>\!\s*important</expression>
 			</zone>
-            <zone name="support.function.color.transform.single.less">
+            <zone name="support.function.color.transform.less">
                 <starts-with>
 					<expression>(lighten|darken|saturate|desaturate|fadein|fadeout|fade|spin|mix|greyscale|contrast)\s*(\()</expression>
 					<capture number="1" name="name"/>
@@ -422,7 +422,7 @@
 					<include collection="property-values"/>
 				</subzones>
             </zone>
-            <zone name="support.function.color.transform.multiple.less">
+            <zone name="support.function.color.blend.less">
                 <starts-with>
 					<expression>(multiply|screen|overlay|softlight|hardlight|difference|exclusion|average|negation)\s*(\()</expression>
 					<capture number="1" name="name"/>
@@ -436,9 +436,6 @@
 					<include collection="property-values"/>
 				</subzones>
             </zone>
-			<zone name="keyword.important.less">
-				<expression>\!\s*important</expression>
-			</zone>
             <zone name="support.function.check">
                 <starts-with>
 					<expression>(is(color|number|string|keyword|url|pixel|percentage|em|unit))\s*(\()</expression>

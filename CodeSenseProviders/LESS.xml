@@ -12,10 +12,12 @@
 		<selector>property-name:capture(name) + property-value - punctuation.separator, property-name:capture(name) + property-value > punctuation.terminator, property-name:capture(name) + property-value > punctuation.function</selector>
 		<!-- The completions element points to the CodeSense Library key that has to be used. It can contain placeholders for captured pieces of text from the selector. -->
 		<completions>com.macrabbit.css.property.${name}</completions>
+        <completions>nl.alexanderweiss.less.property.${name}</completions>
         
-		<completions>nl.alexanderweiss.less.functions.string</completions>
-        <completions>nl.alexanderweiss.less.functions.misc</completions>
+        <!-- assorted less functions -->
         <completions>nl.alexanderweiss.less.functions.math</completions>
+        <completions>nl.alexanderweiss.less.functions.string</completions>
+        <completions>nl.alexanderweiss.less.functions.misc</completions>
 		<!-- The complete-match element defines a regular expression for the piece of text that is completed by this provider. It's not necessary to append an end-of-line symbol: this happens automatically. Note that even if this provider is active in the current context, and the expression is matched, it may still be ignored for a completion if other providers match a different piece of the same text. -->
 		<complete-match>[a-zA-Z0-9-]*</complete-match>
 		
@@ -68,6 +70,26 @@
 		<completions>nl.alexanderweiss.less.mixins.bootstrap</completions>
 		<complete-match capture="2">(^|;|{)\s*([#.a-zA-Z0-9-\s>\-]*)</complete-match>
         <require-suffix>(\(|;|^)</require-suffix>
+	</provider>
+    
+    <!-- less variable definitions -->
+    <provider>
+		<!-- The selector element specifies in what document contexts the provider is active. -->
+		<selector>variable.definition.less:capture(name) + property-value - punctuation.separator, variable.definition.less:capture(name) + property-value > punctuation.terminator, variable.definition.less:capture(name) + property-value > punctuation.function</selector>
+		<!-- The completions element points to the CodeSense Library key that has to be used. It can contain placeholders for captured pieces of text from the selector. -->
+		<completions>com.macrabbit.css.property.border</completions>
+        <completions>com.macrabbit.css.property.display</completions>
+        <completions>nl.alexanderweiss.less.property.color</completions>
+        
+        <!-- assorted less functions -->
+        <completions>nl.alexanderweiss.less.functions.math</completions>
+        <completions>nl.alexanderweiss.less.functions.string</completions>
+        <completions>nl.alexanderweiss.less.functions.misc</completions>
+		<!-- The complete-match element defines a regular expression for the piece of text that is completed by this provider. It's not necessary to append an end-of-line symbol: this happens automatically. Note that even if this provider is active in the current context, and the expression is matched, it may still be ignored for a completion if other providers match a different piece of the same text. -->
+		<complete-match>[a-zA-Z0-9-]*</complete-match>
+		
+		<!-- The require-suffix element (optional) defines a regular expression which the text *after* the completion has to match. It's not necessary to prepend a begin-of-line symbol: this happens automatically. -->
+		<require-suffix>[^:]|</require-suffix>
 	</provider>
 	
 </codesense>
