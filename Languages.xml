@@ -2,7 +2,7 @@
 
 <settings>
 
-	<language id="text.less">
+	<language id="nl.alexanderweiss.LESS">
 		
 		<!-- Note: root-zone will be deprecated in the next beta and replaced by syntax-name -->
 		<root-zone>styling.less</root-zone>
